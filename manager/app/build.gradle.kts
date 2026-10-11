@@ -61,6 +61,7 @@ val baseCFlags = listOf(
 val baseCppFlags = baseCFlags + "-fno-rtti"
 
 android {
+    // IMPORTANT: Namespace ko change mat karna, warna code compile nahi hoga
     namespace = "me.weishu.kernelsu"
 
     buildTypes {
