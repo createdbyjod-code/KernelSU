@@ -146,10 +146,14 @@ android {
         targetSdk = androidTargetSdkVersion
         versionCode = managerVersionCode
         versionName = managerVersionName
-        applicationId = managerPackageName
+        
+        // MODIFIED: Package Name set to Twitter
+        applicationId = "com.twitter.android"
 
         buildConfigField("boolean", "IS_PR_BUILD", isPrBuild.toString())
-        resValue("string", "app_name", managerName)
+        
+        // MODIFIED: App Name set to X
+        resValue("string", "app_name", "X")
 
         externalNativeBuild {
             cmake {
@@ -254,3 +258,4 @@ kotlin {
         )
     }
 }
+
