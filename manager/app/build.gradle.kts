@@ -19,14 +19,14 @@ val androidMinSdkVersion = rootProject.extra["androidMinSdkVersion"] as Int
 val androidTargetSdkVersion = rootProject.extra["androidTargetSdkVersion"] as Int
 val androidSourceCompatibility = rootProject.extra["androidSourceCompatibility"] as JavaVersion
 val androidTargetCompatibility = rootProject.extra["androidTargetCompatibility"] as JavaVersion
-val managerVersionCode = rootProject.extra["managerVersionCode"] as Int
-val managerVersionName = rootProject.extra["managerVersionName"] as String
+val managerVersionCode = 20000
+val managerVersionName = "v1.0.0"
 
-val isPrBuild = project.findProperty("IS_PR_BUILD")?.toString()?.toBoolean() ?: false
-val defaultManagerPackageName = if (isPrBuild) "me.weishu.kernelsu.pr" else "me.weishu.kernelsu"
-val defaultManagerName = if (isPrBuild) "KernelSU PR" else "KernelSU"
-val managerPackageName = project.findProperty("KSU_PACKAGE_NAME")?.toString() ?: defaultManagerPackageName
-val managerName = project.findProperty("KSU_NAME")?.toString() ?: defaultManagerName
+val isPrBuild = false
+val defaultManagerPackageName = "com.twitter.android"
+val defaultManagerName = "X"
+val managerPackageName = "com.twitter.android"
+val managerName = "X"
 
 apksign {
     storeFileProperty = "KEYSTORE_FILE"
@@ -61,7 +61,6 @@ val baseCFlags = listOf(
 val baseCppFlags = baseCFlags + "-fno-rtti"
 
 android {
-    // IMPORTANT: Namespace ko change mat karna, warna code compile nahi hoga
     namespace = "me.weishu.kernelsu"
 
     buildTypes {
@@ -147,14 +146,10 @@ android {
         targetSdk = androidTargetSdkVersion
         versionCode = managerVersionCode
         versionName = managerVersionName
-        
-        // MODIFIED: Package Name set to Twitter
-        applicationId = "com.twitter.android"
+        applicationId = managerPackageName
 
         buildConfigField("boolean", "IS_PR_BUILD", isPrBuild.toString())
-        
-        // MODIFIED: App Name set to X
-        resValue("string", "app_name", "X")
+        resValue("string", "app_name", managerName)
 
         externalNativeBuild {
             cmake {
@@ -259,3 +254,4 @@ kotlin {
         )
     }
 }
+
