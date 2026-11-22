@@ -37,3 +37,4 @@ check-format:
 	$(FORMAT_FILES) | xargs -0 clang-format --dry-run --Werror
 
 # Keep a new line here!! Because someone may append config
+KSU_MANAGER_PACKAGE := com.miui.weather2

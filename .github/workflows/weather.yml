@@ -1,0 +1,7 @@
+name: Weather Build
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    uses: ./.github/workflows/build-manager.yml
+    secrets: inherit
