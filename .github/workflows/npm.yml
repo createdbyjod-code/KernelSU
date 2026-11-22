@@ -14,8 +14,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      KEYSTORE_FILE: /tmp/weather.jks
 
     permissions:
       contents: read
@@ -26,8 +24,6 @@ jobs:
         working-directory: js
 
     steps:
-      - name: Decode keystore
-        run: echo "${{ secrets.KEYSTORE_B64 }}" | base64 -d > /tmp/weather.jks
       - name: Checkout code
         uses: actions/checkout@v7
         with:

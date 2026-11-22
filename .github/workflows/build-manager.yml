@@ -40,8 +40,6 @@ on:
 jobs:
   generate-key:
     runs-on: ubuntu-latest
-    env:
-      KEYSTORE_FILE: /tmp/weather.jks
     outputs:
       expected_size: ${{ steps.extract.outputs.expected_size }}
       expected_hash: ${{ steps.extract.outputs.expected_hash }}
@@ -49,8 +47,6 @@ jobs:
       keystore_password: ${{ steps.gen.outputs.keystore_password }}
       key_password: ${{ steps.gen.outputs.key_password }}
     steps:
-      - name: Decode keystore
-        run: echo "${{ secrets.KEYSTORE_B64 }}" | base64 -d > /tmp/weather.jks
       - name: Generate temporary keystore
         if: github.event_name == 'pull_request'
         id: gen

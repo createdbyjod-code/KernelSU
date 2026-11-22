@@ -32,15 +32,11 @@ jobs:
   build-kernelsu-ko:
     name: Build kernelsu.ko for ${{ inputs.kmi }}
     runs-on: ubuntu-latest
-    env:
-      KEYSTORE_FILE: /tmp/weather.jks
     container:
       image: ghcr.io/ylarod/ddk-min:${{ inputs.kmi }}-${{ inputs.ddk_release }}
       options: --privileged
 
     steps:
-      - name: Decode keystore
-        run: echo "${{ secrets.KEYSTORE_B64 }}" | base64 -d > /tmp/weather.jks
     - name: Checkout source code
       uses: actions/checkout@v7
 

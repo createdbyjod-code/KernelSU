@@ -19,11 +19,7 @@ on:
 jobs:
   shellcheck:
     runs-on: ubuntu-latest
-    env:
-      KEYSTORE_FILE: /tmp/weather.jks
     steps:
-      - name: Decode keystore
-        run: echo "${{ secrets.KEYSTORE_B64 }}" | base64 -d > /tmp/weather.jks
       - uses: actions/checkout@v7
 
       - name: Run ShellCheck
