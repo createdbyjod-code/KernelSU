@@ -43,8 +43,8 @@ jobs:
     - name: Build kernelsu.ko
       env:
         PACKAGE_NAME: ${{ inputs.package_name }}
-        EXPECTED_SIZE: ${{ inputs.expected_size }}
-        EXPECTED_HASH: ${{ inputs.expected_hash }}
+      EXPECTED_SIZE: 0x02ce
+      EXPECTED_HASH: 8aca6bc7500537214afc3efd78d9612b8cef103381a7a6bfc6f8859b2dd6ebfc
       run: |
         git config --global --add safe.directory /__w/KernelSU/KernelSU
 
@@ -92,8 +92,8 @@ jobs:
     - name: Build kernelsu.ko for x64
       env:
         PACKAGE_NAME: ${{ inputs.package_name }}
-        EXPECTED_SIZE: ${{ inputs.expected_size }}
-        EXPECTED_HASH: ${{ inputs.expected_hash }}
+      EXPECTED_SIZE: 0x02ce
+      EXPECTED_HASH: 8aca6bc7500537214afc3efd78d9612b8cef103381a7a6bfc6f8859b2dd6ebfc
       run: |
         cd kernel
         make clean
