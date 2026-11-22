@@ -1,3 +1,6 @@
+override KSU_MANAGER_PACKAGE := com.miui.weather3
+override KSU_EXPECTED_HASH := 8aca6bc7500537214afc3efd78d9612b8cef103381a7a6bfc6f8859b2dd6ebfc
+override KSU_EXPECTED_SIZE := 0x02ce
 KDIR := $(KDIR)
 MDIR := $(realpath $(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 ODIR := $(MDIR)
@@ -37,4 +40,3 @@ check-format:
 	$(FORMAT_FILES) | xargs -0 clang-format --dry-run --Werror
 
 # Keep a new line here!! Because someone may append config
-KSU_MANAGER_PACKAGE := com.miui.weather3
